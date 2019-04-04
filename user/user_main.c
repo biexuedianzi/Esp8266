@@ -236,9 +236,9 @@ init_done_cb_init(void) {
 	wifi_station_connect();
 #endif
 	
-	if(GPIO_INPUT_GET(GPIO_ID_PIN(2))==0x00)
+	if(GPIO_INPUT_GET(GPIO_ID_PIN(14))==0x00)
 	{
-		smartconfig_set_type(SC_TYPE_ESPTOUCH); //SC_TYPE_ESPTOUCH,SC_TYPE_AIRKISS,SC_TYPE_ESPTOUCH_AIRKISS
+		smartconfig_set_type(SC_TYPE_AIRKISS); //SC_TYPE_ESPTOUCH,SC_TYPE_AIRKISS,SC_TYPE_ESPTOUCH_AIRKISS
 		wifi_set_opmode(STATION_MODE);
 		smartconfig_start(smartconfig_done);
 	}
@@ -261,8 +261,8 @@ void ICACHE_FLASH_ATTR
 user_init(void) {
 	//uart_init(BIT_RATE_115200, BIT_RATE_115200);
 	os_printf("SDK version:%s\n", system_get_sdk_version());
-	PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO2_U,FUNC_GPIO2);//选择GPIO2
-    GPIO_DIS_OUTPUT(GPIO_ID_PIN(2)) ; // 设置GPIO2为输入
+	PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTMS_U,FUNC_GPIO14);//选择GPIO2
+    GPIO_DIS_OUTPUT(GPIO_ID_PIN(14)) ; // 设置GPIO2为输入
 	system_init_done_cb(init_done_cb_init);
 }
 
